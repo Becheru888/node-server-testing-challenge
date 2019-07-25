@@ -24,3 +24,11 @@ describe('server', () =>{
         })
     });
 });
+
+
+describe('server', () =>{
+    it('DELETE WORKS?', () =>{
+        return request(server)
+        .post('/api/users/:id')
+    });
+});
