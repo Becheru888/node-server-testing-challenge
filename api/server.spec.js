@@ -18,17 +18,15 @@ describe('server', () =>{
     it('ADD WORKS?', () =>{
         return request(server)
         .post('/api/users/add')
+        .send({firstName: 'John',lastName:'Snow'})
+        .expect(200)
         .expect('Content-Type', /json/)  
-        .then(req => {
-            expect(req.body).toBeInstanceOf(Object);
-        })
+        .expect(function(res) {
+            res.body.firstName = 'John';
+            res.body.lastName = 'Snow'
+          })
     });
 });
 
 
-describe('server', () =>{
-    it('DELETE WORKS?', () =>{
-        return request(server)
-        .post('/api/users/:id')
-    });
-});
+
