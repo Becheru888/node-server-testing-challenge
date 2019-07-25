@@ -31,4 +31,18 @@ server.get('/api/users', (_, res) => {
     })
   })
 
+
+
+  server.delete('/api/users/:id', (req, res) =>{
+      Users.remove(req.params.id)
+      .then(_ =>{
+          res.status(200).json(
+              {message: 'User deleted!'})
+      }).catch(error =>{
+          res.status(500).json('User id not found', error)
+      })
+  })
+
+
+  
 module.exports = server;
